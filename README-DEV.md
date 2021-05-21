@@ -6,8 +6,8 @@
  
 <p align="center">
 
-<a href="https://www.npmjs.com/package/@nkaurelien/nest-bugsnag"><img src="https://img.shields.io/npm/v/@nkaurelien/nest-bugsnag.svg" alt="NPM Version" /></a>
-<a href="https://github.com/nkaurelien/nest-bugsnag"><img src="https://img.shields.io/npm/l/@nkaurelien/nest-bugsnag.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/package/@wizbii/nest-bugsnag"><img src="https://img.shields.io/npm/v/@wizbii/nest-bugsnag.svg" alt="NPM Version" /></a>
+<a href="https://github.com/wizbii/nest-bugsnag"><img src="https://img.shields.io/npm/l/@wizbii/nest-bugsnag.svg" alt="Package License" /></a>
 <a href="https://twitter.com/AstridNkumbe"><img src="https://img.shields.io/twitter/follow/AstridNkumbe.svg?style=social&label=Follow"></a>
 
 </p>
@@ -19,29 +19,30 @@ A [Nest](https://github.com/nestjs/nest) module wrapper for [bugsnag-js](https:/
 ## Installation
 
 ```bash
-$ npm i @bugsnag/plugin-express --save
-$ npm i @nkaurelien/nest-bugsnag --save
+$ yarn add @bugsnag/plugin-express
+$ yarn add @wizbii/nest-bugsnag
 ```
 
 ## Publish to npm
+
 ```bash
-$ npm run clean:build
+$ yarn clean:build
 $ cd dist
-$ npm version patch
-$ npm publish
+$ yarn version patch
+$ yarn publish
 ```
 
 Updating your published package version number
 To change the version number in package.json, on the command line, in the package root directory, run the following command, replacing <update_type> with one of the semantic versioning release types (patch, major, or minor):
-Run npm publish.
+Run yarn publish.
 
 ```bash
 # update_type is patch, major, or minor
-$ npm version <update_type>
+$ yarn version <update_type>
 ```
 
-You need login once before publish 
+You need login once before publish
 
 ```bash
-$ npm login
+$ yarn login
 ```

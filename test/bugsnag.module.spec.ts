@@ -3,12 +3,13 @@ import { BugsnagModule, BugsnagService } from '../src';
 import { BUGSNAG_SERVICE_PROVIDER } from '../src/bugsnag.constants';
 
 describe('Bugsnag Module', () => {
-
   it('Test root method', async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [BugsnagModule.forRoot({
-        apiKey: 'some random key',
-      })],
+      imports: [
+        BugsnagModule.forRoot({
+          apiKey: 'some random key',
+        }),
+      ],
     }).compile();
 
     const provider = moduleFixture.get<BugsnagService>(BUGSNAG_SERVICE_PROVIDER);
@@ -19,13 +20,15 @@ describe('Bugsnag Module', () => {
 
   it('Test root async method', async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [BugsnagModule.forRootAsync({
-        useFactory: () => {
-          return {
-            apiKey: 'random-key',
-          };
-        },
-      })],
+      imports: [
+        BugsnagModule.forRootAsync({
+          useFactory: () => {
+            return {
+              apiKey: 'random-key',
+            };
+          },
+        }),
+      ],
     }).compile();
 
     const provider = moduleFixture.get<BugsnagService>(BUGSNAG_SERVICE_PROVIDER);
