@@ -6,8 +6,8 @@
  
 <p align="center">
 
-<a href="https://www.npmjs.com/package/@nkaurelien/nest-bugsnag"><img src="https://img.shields.io/npm/v/@nkaurelien/nest-bugsnag.svg" alt="NPM Version" /></a>
-<a href="https://github.com/nkaurelien/nest-bugsnag"><img src="https://img.shields.io/npm/l/@nkaurelien/nest-bugsnag.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/package/@wizbii/nest-bugsnag"><img src="https://img.shields.io/npm/v/@wizbii/nest-bugsnag.svg" alt="NPM Version" /></a>
+<a href="https://github.com/wizbii/nest-bugsnag"><img src="https://img.shields.io/npm/l/@wizbii/nest-bugsnag.svg" alt="Package License" /></a>
 <a href="https://twitter.com/AstridNkumbe"><img src="https://img.shields.io/twitter/follow/AstridNkumbe.svg?style=social&label=Follow"></a>
 
 </p>
@@ -19,8 +19,8 @@ A [Nest](https://github.com/nestjs/nest) module wrapper for [bugsnag-js](https:/
 ## Installation
 
 ```bash
-$ npm i @bugsnag/plugin-express --save
-$ npm i @nkaurelien/nest-bugsnag --save
+$ yarn add @bugsnag/plugin-express
+$ yarn add @wizbii/nest-bugsnag
 ```
 
 ## Quick Start
@@ -29,19 +29,18 @@ Import the `BugsnagModule` into the module. For example `AppModule`:
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { BugsnagModule } from '@nkaurelien/nest-bugsnag';
-import BugsnagPluginExpress from '@bugsnag/plugin-express'
-
+import { BugsnagModule } from '@wizbii/nest-bugsnag';
+import BugsnagPluginExpress from '@bugsnag/plugin-express';
 
 @Module({
   imports: [
     BugsnagModule.forRoot({
-          apiKey: '<API_KEY>',
-          plugins: [BugsnagPluginExpress],
-      }),
+      apiKey: '<API_KEY>',
+      plugins: [BugsnagPluginExpress],
+    }),
   ],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 In the **main.ts** file, change the HTTP platform to use express
@@ -53,7 +52,7 @@ const app = await NestFactory.create(AppModule);
 const app = await NestFactory.create<NestExpressApplication>(AppModule);
 ```
 
-This handles any errors that Express catches  
+This handles any errors that Express catches
 
 ```typescript
 app.get(BugsnagService).handleAnyErrors(app);
@@ -63,11 +62,11 @@ Then you can inject BugsnagService. Example:
 
 ```typescript
 import { Controller } from '@nestjs/common';
-import { BugsnagService } from '@nkaurelien/nest-bugsnag';
+import { BugsnagService } from '@wizbii/nest-bugsnag';
 
 @Controller('cats')
 export class CatsController {
-  constructor(private readonly logger: BugsnagService) { }
+  constructor(private readonly logger: BugsnagService) {}
 }
 ```
 
@@ -75,13 +74,14 @@ BugsnagService has instance property which wrap bugsnag client. So you can acces
 
 ```typescript
 try {
-  something.risky()
+  something.risky();
 } catch (e) {
-    this.logger.instance.notify('message');
+  this.logger.instance.notify('message');
 }
 ```
- In your controller, you can call req.bugsnag.notify(err)  which will include information about the request in the error report. For example:
- 
+
+In your controller, you can call req.bugsnag.notify(err) which will include information about the request in the error report. For example:
+
 ```typescript
  @Get()
  getHello(@Request() req): string {
@@ -93,14 +93,14 @@ try {
      return 'Hello World!';
  }
 ```
-Note that `BugsnagModule` is a global module, it will be available in all you feature modules.
 
+Note that `BugsnagModule` is a global module, it will be available in all you feature modules.
 
 ## Async configuration Sample
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { BugsnagModule } from '@nkaurelien/nest-bugsnag';
+import { BugsnagModule } from '@wizbii/nest-bugsnag';
 
 @Module({
   imports: [
@@ -112,11 +112,11 @@ import { BugsnagModule } from '@nkaurelien/nest-bugsnag';
     }),
   ],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 The factory might be async and is able to inject dependencies through the `inject` option.
 
-
 ## Keywords
+
 bugsnagJs, nestJs, logger
