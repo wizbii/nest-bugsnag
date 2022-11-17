@@ -27,7 +27,6 @@
     "clean:build": "yarn clean && yarn build",
     "build": "tsc -p tsconfig.json && ts-node postbuild.ts",
     "clean": "rimraf dist",
-    "postbuild": "ts-node postbuild.ts",
     "prepublishOnly": "yarn clean:build",
     "test": "jest --config jest.config.json",
     "lint": "run-p -c 'lint:*'",
